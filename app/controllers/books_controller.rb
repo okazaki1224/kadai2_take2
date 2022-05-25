@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   def index
     @book = Book.new
-    @books = Book.order(id: :DESC)
+    @books = Book.all
   end
 
   def show
@@ -9,7 +9,7 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = Book.find(params[:id])
+    @book = Book.find(params[:id]) #ここをなんとかする
   end
   
   def create
@@ -45,7 +45,7 @@ class BooksController < ApplicationController
   
   private
   def book_params
-    params.require(:book).permit(:Title,:Body)
+    params.require(:book).permit(:title,:body)
   end
   
 end
